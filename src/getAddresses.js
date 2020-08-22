@@ -1,5 +1,15 @@
 const getAddresses = (text) => {
-  return [];
+  return text.split('\n\n').map((block) => {
+    const lines = block.split('\n');
+    const postCodeCity = lines[lines.length - 1].split(' ');
+
+    return {
+      name: lines[0],
+      address: lines.length === 3 ? lines[1] : `${lines[1]} ${lines[2]}`,
+      city: postCodeCity[1],
+      postcode: postCodeCity[0],
+    };
+  });
 };
 
 export default getAddresses;
