@@ -7,7 +7,8 @@ const getAddresses = (text) => {
       name: lines[0],
       address: lines.length === 3 ? lines[1] : `${lines[1]} ${lines[2]}`,
       city: postCodeCity[1],
-      postcode: postCodeCity[0],
+      postalCode: postCodeCity[0],
+      federalState: null,
     };
   });
 };

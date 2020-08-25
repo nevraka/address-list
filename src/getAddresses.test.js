@@ -3,7 +3,7 @@ import getAddresses from './getAddresses';
 describe('getAddresses', () => {
   test('returns addresses', () => {
     const input = `Dieter Kluge
-Inge Beisheim Platz 85
+    Inge Beisheim Platz 85
 21727 Estorf
 
 Ulrich Herzog
