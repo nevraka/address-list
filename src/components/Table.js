@@ -1,7 +1,7 @@
 import React from 'react';
 import './Table.css';
 
-const Table = ({ data }) => {
+const Table = ({ users }) => {
   return (
     <div>
       <h1>Users</h1>
@@ -16,14 +16,14 @@ const Table = ({ data }) => {
           </tr>
         </thead>
         <tbody>
-          {data.map((doctor) => {
+          {users.map((user) => {
             return (
               <tr>
-                <td>{doctor.name}</td>
-                <td>{doctor.address}</td>
-                <td>{doctor.postalCode}</td>
-                <td>{doctor.city}</td>
-                <td>{doctor.federalState}</td>
+                <td>{user.name}</td>
+                <td>{user.address}</td>
+                <td>{user.postalCode}</td>
+                <td>{user.city}</td>
+                <td>{user.federalState}</td>
               </tr>
             );
           })}
