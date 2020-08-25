@@ -1,25 +1,31 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './App.css';
 import getAddresses from '../getAddresses';
+import googleMapsApi, { API_KEY } from '../api/googleMapsApi';
+import getStateFromResults from '../getStateFromResults';
+import Table from './Table';
 
 const App = () => {
+  const getUrl = (user) =>
+    `/geocode/json?address=${user.postalCode}+${user.city}+Germany&key=${API_KEY}`;
+
   const [data, setData] = useState([]);
 
   useEffect(() => {
     axios.get('/data/testdaten.txt').then((response) => {
-      const addresses = getAddresses(response.data);
-      setData(addresses);
+      const users = getAddresses(response.data);
+      setData(users);
+
+      users.forEach((user) => {
+        googleMapsApi.get(getUrl(user)).then((response) => {
+          user.federalState = getStateFromResults(response.data.results);
+          setData([...users]); // force re-render
+        });
+      });
     });
   }, []);
 
-  return (
-    <div>
-      {data.map((doctor) => {
-        return doctor.name;
-      })}
-    </div>
-  );
+  return <Table users={data} />;
 };
 
 export default App;
