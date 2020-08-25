@@ -1,0 +1,7 @@
+Table td,
+Table th {
+  padding: 4px 8px;
+}
+thead > tr {
+  text-align: justify;
+}
