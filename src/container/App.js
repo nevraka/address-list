@@ -5,10 +5,10 @@ import googleMapsApi, { API_KEY } from '../api/googleMapsApi';
 import getStateFromResults from '../getStateFromResults';
 import Table from './Table';
 
-const App = () => {
-  const getUrl = (user) =>
-    `/geocode/json?address=${user.postalCode}+${user.city}+Germany&key=${API_KEY}`;
+const getUrl = (user) =>
+  `/geocode/json?address=${user.postalCode}+${user.city}+Germany&key=${API_KEY}`;
 
+const App = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
