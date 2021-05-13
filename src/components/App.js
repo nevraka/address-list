@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import getAddresses from '../getAddresses';
+import getAddresses from '../utils/getAddresses';
 import googleMapsApi, { API_KEY } from '../api/googleMapsApi';
-import getStateFromResults from '../getStateFromResults';
+import getStateFromResults from '../utils/getStateFromResults';
 import Table from './Table';
 
 const getUrl = (user) =>
